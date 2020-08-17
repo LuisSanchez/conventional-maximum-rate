@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from webapp.models import Credit
+from webapp.serializers import TMCSerializer
 from external_api.views import TMCByYearAndMonth, TodayUF
 
 _locale_decimal = locale.localeconv()['decimal_point']
@@ -35,6 +36,27 @@ def calculate_tmc_by_given_day(credit: Credit, total_value, rate):
     total_value = (total_value / 30) * days_of_tmc
     return int(total_value)
 
+def get_type_of_tmc(monto_uf, res_tmc):
+    """ Gets the tmc by current year and month, search the value by type,
+        there are two types of tmc with less than 90 days,
+        returns the value of tmc """
+    # serializer not needed
+    #tmc_serialized = TMCSerializer(res_tmc.data['TMCs'], many=True)
+
+    # sets the type
+    if monto_uf > 5000:
+        tmc_type = '25'
+    else:
+        tmc_type = '26'
+
+    # gets the value
+    for tmc in res_tmc.data['TMCs']:
+        if tmc['Tipo'] == tmc_type:
+            value_tmc = tmc['Valor']
+            break
+    
+    return value_tmc
+
 
 class CalculateTMCForCredit(APIView, Credit):
     """ Calculates the tmc for the given credits on the given day after the deadline """
@@ -44,18 +66,20 @@ class CalculateTMCForCredit(APIView, Credit):
             'year': dt.year, 
             'month': dt.month 
         }
+        # calls the external api of the bank to get the tmcs
         res_tmc = TMCByYearAndMonth.get(request, None, kwargs=kwargs)
+        value_tmc = get_type_of_tmc(credit.monto_uf, res_tmc)
 
         todayUF = TodayUF.get(request)
         todayUF = todayUF.data['UFs'][0]["Valor"]
         valorUF = replace_chilean_decimals(todayUF)
 
         pesos_amount = calculate_pesos_using_uf(credit.monto_uf, valorUF)
-        tmc = calculate_tmc_by_given_day(credit, pesos_amount, 28.2)
+        tmc = calculate_tmc_by_given_day(credit, pesos_amount, float(value_tmc))
 
         result = { 
             "total_value": pesos_amount,
-            "tmc": tmc
+            "tmc": tmc,
+            "rate": value_tmc
         }
-
         return Response(json.dumps(result))

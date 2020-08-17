@@ -29,4 +29,5 @@ class TMC(models.Model):
     titulo = models.CharField(max_length=300)
     subtitulo = models.CharField(max_length=300)
     valor = models.CharField(max_length=300)
+    fecha = models.CharField(max_length=300, default='')
     tipo = models.CharField(max_length=300)
