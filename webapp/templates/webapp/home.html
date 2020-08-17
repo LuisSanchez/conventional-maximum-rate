@@ -3,5 +3,13 @@
     Home
 {% endblock %}
 {% block content %}
-    <h2>Hello and thanks for your time!</h2>
+    <h2>Welcome!</h2>
+    <div>
+        <p>Want to see how your 'Tasa máxima convecional' will be at the day you want?</p>
+        <button>
+            <a href="{% url 'credit' %}" class="navbar-brand">Click here!</a>
+        </button>
+        <p>Only applies for credits with less or equal to 90 days of deadline</p>
+    </div>
+    <p>Thanks for your time!</p>
 {% endblock %}

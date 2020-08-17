@@ -52,7 +52,7 @@ def get_json_from_TMC_response(res):
 
 class TodayUF(APIView):
     """ Retrieve the UF of the day """
-    def get(request):
+    def get(request, *args):
         url = 'https://api.sbif.cl/api-sbifv3/recursos_api/uf?apikey=%s&formato=json' % (settings.API_KEY_SBIF)
         res = requests.get(url)
         res = get_json_from_UF_response(res)
