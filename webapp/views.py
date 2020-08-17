@@ -29,10 +29,16 @@ def credit(request):
                 return render(request, "webapp/credit.html", {"form": form, "message": message})
             else:
                 view = CalculateTMCForCredit.post(request, credit_instance, None)
-                #calculate_res = view(request, credit_instance)
                 new_value = json.loads(view.data)
-                
-                return render(request, "webapp/rate_tmc.html", {"uf": new_value['credito']} )
+                total_delay_days = credit_instance.payment_day_with_calculated_tmc - credit_instance.payment_deadline_days
+                total_value_with_tmc = f"{new_value['total_value'] + new_value['tmc']:,}"
+
+                context = {
+                    "total_value": f"{new_value['total_value']:,}",
+                    "tmc": f"{new_value['tmc']:,}",
+                    "message": "El total a pagar por %d día(s) de mora es de $ %s" % (total_delay_days, total_value_with_tmc)
+                }
+                return render(request, "webapp/rate_tmc.html", context)
         render(request, "webapp/credit.html")
     else:
         return render(request, "webapp/credit.html", {"form": form})
