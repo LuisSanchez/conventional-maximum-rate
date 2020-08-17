@@ -13,13 +13,13 @@ from external_api.views import TMCByYearAndMonth, TodayUF
 _locale_decimal = locale.localeconv()['decimal_point']
 _locale_thousands = locale.localeconv()['thousands_sep']
 
-def replace_chilean_decimals(num):
+def replace_chilean_decimals(value):
     """ For some reason globalization on my computer is not working
         cant use locales, so I had to do this... terrible """
     if _locale_decimal == '.':
-        num = num.replace('.', '') # replace thousands
-        num = num.replace(',', '.') # sets decimals
-    return float(num)
+        value = value.replace('.', '') # replace thousands
+        value = value.replace(',', '.') # sets decimals
+    return float(value)
 
 def calculate_pesos_using_uf(monto_uf, todayUF):
     """ Pesos with the UF of the day """
