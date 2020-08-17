@@ -12,13 +12,14 @@ pip install -r requirements.txt
 
 ## Usage
 
-```python
-import foobar
+- Enter an UF amount.
+- Set the deadline of days.
+- Set the day you want to know how much you will have to pay due to the TMC.
 
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+## Considerations
+
+- Conventional rate and CAE are 0.
+- Max number of days is 90.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
