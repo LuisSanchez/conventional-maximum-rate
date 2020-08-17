@@ -3,10 +3,13 @@
     Credit
 {% endblock %}
 {% block content %}
+    <h1>Enter your values</h1>
     <form method="POST" class="log-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Calculate</button>
+        <div class="text-right">
+            <button type="submit" class="btn btn-lg btn-primary">Calculate</button>
+        </div>
     </form>
     {% if message %}
         <h3>{{ message }}</h3>

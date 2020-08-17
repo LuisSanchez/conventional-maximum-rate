@@ -1,32 +1,79 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en" class="h-100">
+
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
     <title>{% block title %}{% endblock %}</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sticky-footer-navbar/">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'webapp/site.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/site.css' %}" />
 </head>
 
-{% now "Y" as current_year %}
-{% now "m" as current_month %}
+<body class="d-flex flex-column h-100">
+    {% now "Y" as current_year %}
+    {% now "m" as current_month %}
+    
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="{% url 'home' %}">Cumplo Challenge</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'credit' %}" class="nav-link">TMC of Credit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'todayUF' %}" class="nav-link" rel="noopener" target="_blank">Today UF</a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'tmc' current_year current_month %}" class="nav-link" rel="noopener"
+                            target="_blank">TMC table</a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a href="http://luissanchez.github.io" class="nav-link" rel="noopener"
+                            target="_blank">Contact</a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a href="http://luissanchez.github.io/assets/files/Luis_Sánchez_-_Senior_Software_Engineer.pdf"
+                            class="nav-link" rel="noopener" target="_blank">Resume (CV)</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-<body>
-    <div class="navbar">
-        <a href="{% url 'home' %}" class="navbar-brand">Home</a> |
-        <a href="{% url 'credit' %}" class="navbar-brand">TMC of Credit</a> |
-        <a href="{% url 'todayUF' %}" class="navbar-brand" rel="noopener" target="_blank">Today UF</a> |
-        <a href="{% url 'tmc' current_year current_month %}" class="navbar-brand" rel="noopener" target="_blank">TMC table</a> |
-        <a href="http://luissanchez.github.io/index.html" class="navbar-brand" rel="noopener" target="_blank">Contact</a> |
-        <a href="http://luissanchez.github.io/assets/files/Luis_Sánchez_-_Senior_Software_Engineer.pdf" class="navbar-brand" rel="noopener" target="_blank">Resume (CV)</a>
-    </div>
+    <!-- Begin page content -->
+    <main role="main" class="flex-shrink-0">
+        <div class="container margin-top">
+            {% block content %} {% endblock %}
+        </div>
+    </main>
 
-    <div class="body-content">
-        {% block content %}
-        {% endblock %}
-        <hr/>
-        <footer>
-            <p>© {{current_year}}</p>
-        </footer>
-    </div>
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text-muted">© {{current_year}}</span>
+        </div>
+    </footer>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="{% static 'webapp/js/bootstrap.bundle.min.js' %}"></script>
+
 </html>

@@ -1,15 +1,18 @@
 {% extends "webapp/layout.html" %}
 {% block title %}
-    Home
+Home
 {% endblock %}
 {% block content %}
-    <h2>Welcome!</h2>
-    <div>
-        <p>Want to see how your 'Tasa máxima convecional' will be at the day you want?</p>
-        <button>
-            <a href="{% url 'credit' %}" class="navbar-brand">Click here!</a>
-        </button>
-        <p>Only applies for credits with less or equal to 90 days of deadline</p>
-    </div>
-    <p>Thanks for your time!</p>
+<h1>Welcome!</h1>
+<div>
+    <p class="lead">Want to see how much your 'Tasa máxima convecional' will be at the day you want?</p>
+</div>
+<div class="text-right">
+    <p>
+        <a href="{% url 'credit' %}" class="btn btn-lg btn-primary">Click here!</a>
+    </p>
+</div>
+<div>
+    <small>Only applies for credits with less or equal to 90 days of deadline</small>
+</div>
 {% endblock %}

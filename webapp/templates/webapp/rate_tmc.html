@@ -1,10 +1,23 @@
 {% extends "webapp/layout.html" %}
 {% block title %}
-    Rate of TMC
+Rate of TMC
 {% endblock %}
 {% block content %}
-    <h1>tmc -> ${{ tmc }}</h1>
-    <h2>credito en pesos -> $ {{ total_value }}</h2>
-    <h2>{{ message }}</h2>
-    <p>Con 0% de interés y sin CAE, pero con tasa máxima convencional de {{ rate }}%</p>
+<h1>Results</h1>
+
+<div class="mb-3">
+    <label for="address">TMC</label>
+    <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="${{ tmc }}">
+</div>
+<div class="mb-3">
+    <label for="address">Crédito en pesos</label>
+    <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="$ {{ total_value }}">
+</div>
+<div class="mb-3">
+    <label for="address">TMC</label>
+    <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="${{ tmc }}">
+</div>
+
+<p>{{ message }}</p>
+<p>Con 0% de interés y sin CAE, pero con tasa máxima convencional de {{ rate }}%</p>
 {% endblock %}
