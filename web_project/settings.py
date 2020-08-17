@@ -38,9 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cumplo_api',
-    'external_api',
     'webapp',
+    'rest_framework',
+    'external_api.apps.ExternalApiConfig',
+    'cumplo_api.apps.CumploApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
+
+API_KEY_SBIF = '9c84db4d447c80c74961a72245371245cb7ac15f'

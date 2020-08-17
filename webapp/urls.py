@@ -3,4 +3,5 @@ from webapp import views
 
 urlpatterns = [
     path("", views.home, name="home"),
+    path("credit/", views.credit, name="credit"),
 ]
