@@ -28,7 +28,7 @@ def credit(request):
                 message = "El plazo máximo es de 90 días"
                 return render(request, "webapp/credit.html", {"form": form, "message": message})
             else:
-                response = CalculateTMCForCredit.post(request, credit_instance, None)
+                response = CalculateTMCForCredit.post(None, request, credit_instance, None)
                 response_dict = json.loads(response.data)
                 total_delay_days = credit_instance.payment_day_with_calculated_tmc - credit_instance.payment_deadline_days
                 total_value_with_tmc = f"{response_dict['total_value'] + response_dict['tmc']:,}"

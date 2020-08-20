@@ -23,7 +23,7 @@ def replace_chilean_decimals(value):
 
 def calculate_pesos_using_uf(monto_uf, todayUF):
     """ Pesos with the UF of the day """
-    pesos_amount = abs(monto_uf * todayUF)
+    pesos_amount = round(monto_uf * todayUF)
     return int(pesos_amount)
 
 def calculate_tmc_by_given_day(credit: Credit, total_value, rate):
@@ -31,7 +31,7 @@ def calculate_tmc_by_given_day(credit: Credit, total_value, rate):
     # days to multiply the tmc (dias de mora totales)
     days_of_tmc = credit.payment_day_with_calculated_tmc - credit.payment_deadline_days
     # value of the total multiplied by the percentage of the debt rate
-    total_value = abs((total_value * rate) / 100)
+    total_value = round((total_value * rate) / 100)
     # amount to pay is calculated dividing the total of days of the month multiplied by the tmc days
     total_value = (total_value / 30) * days_of_tmc
     return int(total_value)
@@ -60,7 +60,7 @@ def get_type_of_tmc(monto_uf, res_tmc):
 
 class CalculateTMCForCredit(APIView, Credit):
     """ Calculates the tmc for the given credits on the given day after the deadline """
-    def post(request, credit: Credit, format=None):
+    def post(self, request, credit: Credit, format=None):
         dt = datetime.datetime.today()
         kwargs = { 
             'year': dt.year, 

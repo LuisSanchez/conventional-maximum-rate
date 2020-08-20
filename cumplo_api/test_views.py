@@ -8,7 +8,7 @@ def test_should_return_tmc():
     credit_instance.payment_deadline_days = 5
     credit_instance.payment_day_with_calculated_tmc = 6
 
-    response = cumplo_api.views.CalculateTMCForCredit.post(None, credit_instance)
+    response = cumplo_api.views.CalculateTMCForCredit.post(None, None, credit_instance)
     assert response.status_code == 200
     
 def test_conversion_should_return_float_type():

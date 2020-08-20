@@ -111,6 +111,8 @@ env.bak/
 venv.bak/
 .cumploenv
 .cumploenv/
+cumploenv
+cumploenv/
 
 # Spyder project settings
 .spyderproject
