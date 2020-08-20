@@ -1,17 +1,39 @@
 {% extends "webapp/layout.html" %}
 {% block title %}
-    Credit
+Credit
 {% endblock %}
 {% block content %}
-    <h1>Enter your values</h1>
-    <form method="POST" class="log-form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div class="text-right">
-            <button type="submit" class="btn btn-lg btn-primary">Calculate</button>
-        </div>
-    </form>
-    {% if message %}
-        <h3>{{ message }}</h3>
-    {% endif  %}
+{% load filters %}
+<h1>Enter your values</h1>
+<form method="POST" class="log-form">
+    {% csrf_token %}
+
+
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.monto_uf.errors }}
+        <label for="id_subject">Monto en UF:</label>
+        {{ form.monto_uf|addclass:'form-control' }}
+    </div>
+
+    <div class="fieldWrapper">
+        {{ form.payment_deadline_days.errors }}
+        <label for="id_subject">Días de plazo:</label>
+        {{ form.payment_deadline_days|addclass:'form-control' }}
+    </div>
+
+    <div class="fieldWrapper">
+        {{ form.payment_day_with_calculated_tmc.errors }}
+        <label for="id_subject">Día de pago con mora:</label>
+        {{ form.payment_day_with_calculated_tmc|addclass:'form-control' }}
+    </div>
+
+    <br>
+    <div class="text-right">
+        <button type="submit" class="btn btn-primary">Calculate</button>
+    </div>
+</form>
+{% if message %}
+<h3>{{ message }}</h3>
+{% endif  %}
 {% endblock %}
