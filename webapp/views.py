@@ -4,7 +4,7 @@ from datetime import datetime
 from django.shortcuts import render
 from webapp.forms import CreditForm
 from webapp.models import Credit
-from cumplo_api.views import CalculateTMCForCredit
+from internal_api.views import CalculateTMCForCredit
 
 
 def home(request):

@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'webapp',
     'rest_framework',
     'external_api.apps.ExternalApiConfig',
-    'cumplo_api.apps.CumploApiConfig',
+    'internal_api.apps.CumploApiConfig',
 ]
 
 MIDDLEWARE = [

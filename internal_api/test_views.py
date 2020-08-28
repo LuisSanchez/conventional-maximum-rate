@@ -1,5 +1,5 @@
 import requests
-import cumplo_api.views
+import internal_api.views
 import webapp.models
 
 def test_should_return_tmc():
@@ -8,18 +8,18 @@ def test_should_return_tmc():
     credit_instance.payment_deadline_days = 5
     credit_instance.payment_day_with_calculated_tmc = 6
 
-    response = cumplo_api.views.CalculateTMCForCredit.post(None, None, credit_instance)
+    response = internal_api.views.CalculateTMCForCredit.post(None, None, credit_instance)
     assert response.status_code == 200
     
 def test_conversion_should_return_float_type():
     value = '28.666,50'
-    current = cumplo_api.views.replace_chilean_decimals(value)
+    current = internal_api.views.replace_chilean_decimals(value)
     assert type(current) is float
 
 def test_conversion_should_return_valid_float():
     value = '28.666,50'
     expected = 28666.5
-    current = cumplo_api.views.replace_chilean_decimals(value)
+    current = internal_api.views.replace_chilean_decimals(value)
     assert current == expected
 
 
@@ -46,11 +46,11 @@ ResponseDataMock.data = {
     }
 
 def test_should_return_value_for_type_26():
-    current = cumplo_api.views.get_type_of_tmc(2000, ResponseDataMock)
+    current = internal_api.views.get_type_of_tmc(2000, ResponseDataMock)
     expected = "35.04"
     assert current == expected
 
 def test_should_return_value_for_type_25():
-    current = cumplo_api.views.get_type_of_tmc(6000, ResponseDataMock)
+    current = internal_api.views.get_type_of_tmc(6000, ResponseDataMock)
     expected = "6.81"
     assert current == expected

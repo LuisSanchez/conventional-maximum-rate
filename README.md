@@ -14,9 +14,12 @@ pip install -r requirements.txt
 
 ## Usage
 
+- Check the site [here](https://luissanchez.herokuapp.com/) live on Heroku. 
 - Enter an UF amount.
 - Set the deadline of days.
 - Set the day you want to know how much you will have to pay due to the TMC.
+- Check the UF of the day (Chile).
+- Check the UTM of the month (Chile).
 
 
 ## Considerations
