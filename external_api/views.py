@@ -69,3 +69,15 @@ class TMCByYearAndMonth(APIView):
         res = requests.get(url)
         res = get_json_from_TMC_response(res)
         return Response(res)
+
+class UTMByYearAndMonth(APIView):
+    """ Retrieve the UTM of the month """
+    def get(self, request, *args, **kwargs):
+        if kwargs.get('year', None) == None:
+            kwargs = kwargs['kwargs']
+        utm_year = kwargs['year']
+        utm_month = kwargs['month']
+        url = '%s/utm/%s/%s?apikey=%s&formato=json' % (settings.URL_SBIF, utm_year, utm_month, settings.API_KEY_SBIF)
+        res = requests.get(url)
+        res = get_json_from_UF_response(res)
+        return Response(res)

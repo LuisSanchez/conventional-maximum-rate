@@ -52,18 +52,25 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="{% url 'home' %}" class="nav-link">Home</a>
+                        <a href="{% url 'home' %}" class="nav-link">
+                            Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'credit' %}" class="nav-link">TMC of Credit</a>
+                        <a href="{% url 'credit' %}" class="nav-link">
+                            TMC of Credit</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'todayUF' %}" class="nav-link" rel="noopener" target="_blank">Today UF</a>
+                        <a href="{% url 'todayUF' %}" class="nav-link" rel="noopener" 
+                            target="_blank">Today UF</a>
                     </li>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'tmc' current_year current_month %}" class="nav-link" rel="noopener"
                             target="_blank">TMC table</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'utm' current_year current_month %}" class="nav-link" rel="noopener"
+                            target="_blank">UTM</a>
                     </li>
                     </li>
                     <li class="nav-item">
