@@ -6,5 +6,5 @@
     "python.testing.unittestEnabled": false,
     "python.testing.nosetestsEnabled": false,
     "python.testing.pytestEnabled": true,
-    "python.pythonPath": ".cumploenv\\Scripts\\python.exe"
+    "python.pythonPath": ".env\\Scripts\\python.exe"
 }
