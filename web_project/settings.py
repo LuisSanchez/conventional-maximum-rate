@@ -26,7 +26,9 @@ SECRET_KEY = 'vdc=ot=f(t#t0c@mmn19rpmq+^a@#g1_w+n&_#))9q!_hu50i8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'luissanchez.herokuapp.com',
+]
 
 
 # Application definition
