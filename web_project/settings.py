@@ -21,10 +21,12 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'vdc=ot=f(t#t0c@mmn19rpmq+^a@#g1_w+n&_#))9q!_hu50i8'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'vdc=ot=f(t#t0c@mmn19rpmq+^a@#g1_w+n&_#))9q!_hu50i8')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+
 
 ALLOWED_HOSTS = [
     'luissanchez.herokuapp.com',
@@ -130,6 +132,6 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 
-API_KEY_SBIF = ''
+API_KEY_SBIF = os.environ.get('API_KEY_SBIF', 'no-key')
 
 URL_SBIF = 'https://api.sbif.cl/api-sbifv3/recursos_api'
