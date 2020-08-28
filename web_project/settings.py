@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'luissanchez.herokuapp.com',
+    '127.0.0.1',
+    '127.0.0.1:8000',
 ]
 
 
@@ -128,6 +130,6 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 
-API_KEY_SBIF = '9c84db4d447c80c74961a72245371245cb7ac15f'
+API_KEY_SBIF = ''
 
 URL_SBIF = 'https://api.sbif.cl/api-sbifv3/recursos_api'
