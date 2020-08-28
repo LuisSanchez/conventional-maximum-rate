@@ -52,20 +52,20 @@ def get_json_from_TMC_response(res):
 
 class TodayUF(APIView):
     """ Retrieve the UF of the day """
-    def get(request, *args):
-        url = 'https://api.sbif.cl/api-sbifv3/recursos_api/uf?apikey=%s&formato=json' % (settings.API_KEY_SBIF)
+    def get(self, request, *args):
+        url = '%s/uf?apikey=%s&formato=json' % (settings.URL_SBIF, settings.API_KEY_SBIF)
         res = requests.get(url)
         res = get_json_from_UF_response(res)
         return Response(res)
 
 class TMCByYearAndMonth(APIView):
     """ Retrieve the TMC year and month """
-    def get(request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         if kwargs.get('year', None) == None:
             kwargs = kwargs['kwargs']
         tmc_year = kwargs['year']
         tmc_month = kwargs['month']
-        url = 'https://api.sbif.cl/api-sbifv3/recursos_api/tmc/%s/%s?apikey=%s&formato=json' % (tmc_year, tmc_month, settings.API_KEY_SBIF)
+        url = '%s/tmc/%s/%s?apikey=%s&formato=json' % (settings.URL_SBIF, tmc_year, tmc_month, settings.API_KEY_SBIF)
         res = requests.get(url)
         res = get_json_from_TMC_response(res)
         return Response(res)

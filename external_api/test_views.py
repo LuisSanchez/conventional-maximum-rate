@@ -3,11 +3,11 @@ from django.conf import settings
 import external_api.views
 
 def test_should_return_today_uf_status_200():
-    response = external_api.views.TodayUF.get(None)
+    response = external_api.views.TodayUF.get(None, None)
     assert response.status_code == 200
 
 def test_should_return_today_uf_as_float():
-    response = external_api.views.TodayUF.get(None)
+    response = external_api.views.TodayUF.get(None, None)
     uf = response.data['UFs'][0]["Valor"]
     uf = uf.replace('.', '').replace(',', '.')
     uf_value = float(uf)

@@ -127,3 +127,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 
 API_KEY_SBIF = '9c84db4d447c80c74961a72245371245cb7ac15f'
+
+URL_SBIF = 'https://api.sbif.cl/api-sbifv3/recursos_api'

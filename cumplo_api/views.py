@@ -67,10 +67,10 @@ class CalculateTMCForCredit(APIView, Credit):
             'month': dt.month 
         }
         # calls the external api of the bank to get the tmcs
-        res_tmc = TMCByYearAndMonth.get(request, None, kwargs=kwargs)
+        res_tmc = TMCByYearAndMonth.get(None, request, None, kwargs=kwargs)
         value_tmc = get_type_of_tmc(credit.monto_uf, res_tmc)
 
-        todayUF = TodayUF.get(request)
+        todayUF = TodayUF.get(None, request)
         todayUF = todayUF.data['UFs'][0]["Valor"]
         valorUF = replace_chilean_decimals(todayUF)
 
